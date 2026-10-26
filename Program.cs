@@ -25,7 +25,7 @@
             }
             
             List<Citizen> citizens = new List<Citizen>(); //To set the amount of citizens in the city
-            for (int i = 1; i <= 1; i++) 
+            for (int i = 1; i <= 20; i++) 
             {
                 Citizen citizen = new Citizen();
                 stad.addCitizen(citizen);
