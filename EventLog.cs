@@ -6,15 +6,16 @@ namespace polis__Staden_
 {
     internal class EventLog
     {
+
         List <string> events = new List <string> ();
 
 
         public void addEvent(string info)
         {
             events.Insert (0,info);
-            if (events.Count > 5) 
+            if (events.Count > 10) 
             {
-                events.RemoveAt(5);
+                events.RemoveAt(10);
             }
         }
         public void showEvent() 
@@ -32,8 +33,11 @@ namespace polis__Staden_
                 {
                     Console.WriteLine($"{events[i]}");
                 }
-            }
-        }
 
+
+            }
+
+        }
+        
     }
 }

@@ -17,7 +17,7 @@
             Stad stad = new Stad(); // create a new object of stad class
 
             List<Thief> thieves = new List<Thief>();  //To set the amount of thieves in the city
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 30; i++)
             {
                 Thief thief = new Thief();
                 stad.addThief(thief);
@@ -33,7 +33,7 @@
             }
 
             List<Police> policeOfficers = new List<Police>(); //To set the amount of police in the city
-            for (int i = 1; i <= 10; i++) 
+            for (int i = 1; i <= 20; i++) 
             {
                 Police police = new Police();
                 stad.addPolice(police);
@@ -217,6 +217,17 @@
                 Console.ResetColor();
                 Console.Write(" = Add a new citizen to city");
 
+                Console.SetCursorPosition(70, prisonStartRow + 15);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("T");
+                Console.ResetColor();
+                Console.Write(" = Add a new Thief to city");
+
+                Console.SetCursorPosition(70, prisonStartRow + 16);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("P");
+                Console.ResetColor();
+                Console.Write(" = Add a new Police to city");
 
                 if (Console.KeyAvailable)
                 {
@@ -228,6 +239,23 @@
                         stad.addCitizen(citizen);
                         citizens.Add(citizen);
                         CitizensWealth += 10;
+                        eventLog.addEvent($"New Citizen added {DateTime.Now:HH:mm:ss}");
+                    }
+
+                    if (key.Key == ConsoleKey.T)
+                    {
+                        Thief thief = new Thief();
+                        stad.addThief(thief);
+                        thieves.Add(thief);
+                        eventLog.addEvent($"New Thief added {DateTime.Now:HH:mm:ss}");
+                    }
+
+                    if (key.Key == ConsoleKey.P)
+                    {
+                        Police police = new Police();
+                        stad.addPolice(police);
+                        policeOfficers.Add(police);
+                        eventLog.addEvent($"New Police added {DateTime.Now:HH:mm:ss}");
                     }
                 }
 
