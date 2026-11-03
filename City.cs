@@ -3,60 +3,58 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace polis__Staden_
+namespace PoliceAndThief
 {
-    internal class Stad:Place
+    internal class City:Place
     {
-        char[,] stad; // Jag använder char istället för string så länge vi bara behöver ett tecken (T, M, P).
+        char[,] city; 
 
-
-        // Constructor to create a city with its dimensions
-        public Stad() : base (25,100)  
+        public City() : base (25,100)  
         {
-            stad = new char[Rows, Cols];
-            for (int i = 0; i < Rows; i++) // Loop to fill the city (array) with empty spaces :)
+            city = new char[Rows, Cols];
+            for (int i = 0; i < Rows; i++) 
             {
                 for (int j = 0; j < Cols; j++)
                 {
-                    stad[i,j] = ' '; 
+                    city[i,j] = ' '; 
                 }
             }
          
         }
 
 
-        public void addThief(Thief thief)
+        public void addThief(Thief thief) 
         {
-            stad[thief.Row, thief.Col] = 'T';
+            city[thief.Row, thief.Col] = 'T';
         }
 
-        public void addCitizen(Citizen citizen)
+        public void addCitizen(Citizen citizen) 
         {
-            stad[citizen.Row, citizen.Col] = 'C';
+            city[citizen.Row, citizen.Col] = 'C';
         }
 
-        public void addPolice(Police police)
+        public void addPolice(Police police) 
         {
-            stad[police.Row, police.Col] = 'P';
+            city[police.Row, police.Col] = 'P';
         }
 
 
-        public void ClearCity()
+        public void ClearCity() 
         {
             for (int i = 0; i < Rows; i++) 
             {
                 for (int j = 0; j < Cols; j++)
                 {
-                    stad[i, j] = ' ';
+                    city[i, j] = ' ';
                 }
             }
         }
         
 
-        // Method to display city borders in the terminal
-        public void visaStad()  
+        
+        public void showCity()  
         {
-            for (int i = 0; i < Cols-1; i++) //"City" tar tre platser mer än *, och vi vill ha totalt 102 tecken inklusive kanterna, då blir det Cols-1.
+            for (int i = 0; i < Cols-1; i++) 
             {
                 if (i == 3)
                 {
@@ -76,7 +74,7 @@ namespace polis__Staden_
                 Console.Write('*');
                 for (int j = 0; j < Cols; j++)
                 {
-                    switch (stad[i, j])
+                    switch (city[i, j])
                     {
                         case 'T':
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -95,13 +93,13 @@ namespace polis__Staden_
                             break;
                     }
 
-                    Console.Write(stad[i, j]);
+                    Console.Write(city[i, j]);
                 }
                 Console.ResetColor();
                 Console.Write('*');
                 Console.WriteLine();
             }
-            for (int i = 0;i < Cols+2; i++) //+2 för kanterna :)
+            for (int i = 0;i < Cols+2; i++) 
             {
                 Console.Write('*');
             }

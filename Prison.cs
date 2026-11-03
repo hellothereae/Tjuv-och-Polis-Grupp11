@@ -4,39 +4,38 @@ using System.ComponentModel;
 using System.Text;
 using System.Threading.Channels;
 
-namespace polis__Staden_
+namespace PoliceAndThief
 {
-    internal class Prison : Place // OBS! alla kommentarer finns i Stad.cs
+    internal class Prison : Place 
     {
-        char[,] fangelse;
-        int TotalArrests = 0;
+        char[,] prison; 
+        int TotalArrests = 0; 
 
-        public Prison() : base(10, 10)
+        public Prison() : base(10, 10) 
         {
-            fangelse = new char[Rows, Cols];
+            prison = new char[Rows, Cols]; 
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
                 {
-                    fangelse[i, j] = ' ';
+                    prison[i, j] = ' ';
                 }
             }
 
         }
 
-        public void ClearFangelse()
+        public void ClearPrison() 
         {
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
                 {
-                    fangelse[i, j] = ' ';
+                    prison[i, j] = ' ';
                 }
             }
         }
 
-
-        public void visaFangelse()
+        public void showPrison() 
         {
             for (int i = 0; i < Cols - 3; i++)
             {
@@ -58,7 +57,7 @@ namespace polis__Staden_
                 Console.Write('x');
                 for (int j = 0; j < Cols; j++)
                 {
-                    switch (fangelse[i, j])
+                    switch (prison[i, j])
                     {
                         case 'T':
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -69,7 +68,7 @@ namespace polis__Staden_
                             break;
                     }
 
-                    Console.Write(fangelse[i, j]);
+                    Console.Write(prison[i, j]);
                 }
                 Console.ResetColor();
                 Console.Write('x');
@@ -80,10 +79,11 @@ namespace polis__Staden_
                 Console.Write('x');
             }
             Console.WriteLine();
-            Console.WriteLine($"Prisoners: {Prisoner.Count}");
+            Console.WriteLine($"Prisoners: {Prisoner.Count}"); 
+            
         }
 
-        public void addPrisoner(Thief thief)
+        public void addPrisoner(Thief thief) 
         {
             Prisoner.Add(thief);
             TotalArrests++;
@@ -97,7 +97,7 @@ namespace polis__Staden_
             get { return TotalArrests; }
         }
 
-        public void releasePrisoner(Thief thief)
+        public void releasePrisoner(Thief thief) 
         {
             Prisoner.Remove(thief);
         }
@@ -105,21 +105,27 @@ namespace polis__Staden_
         List<Thief> Prisoner = new List<Thief>();
 
 
-        public void MovePrisoners()
+        public void MovePrisoners() 
         {
-            ClearFangelse();
+            ClearPrison();
             foreach (Thief thief in Prisoner)
             {
                 thief.Move(10, 10);
-                fangelse[thief.Row, thief.Col] = 'T';
+                prison[thief.Row, thief.Col] = 'T';
             }
 
         }
 
-        
-       
-        
-        
+        public void ThiefStatus(List<Thief> thieves)   
+        {
+            foreach (Thief thief in thieves)
+            {
+                if (thief.PrisonStatus == true)
+                {
+                    thief.releaseTime(this);
+                }
+            }
+        }  
     }
 }
 

@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace polis__Staden_
+namespace PoliceAndThief
 {
     internal class Person
     {
-        int posRow; //Position Row
-        int posCol; //Position Col
-        int Rowdir;
+        int posRow; 
+        int posCol; 
+        int Rowdir; 
         int Coldir;
         protected int Money;
 
-        public void Move(int height,int width)
+        
+        public void Move(int height,int width) 
         {
             posRow = posRow + Rowdir;
             posCol = posCol + Coldir;
             
-            if (posRow > height-1)// for city border (pacman) style
+            if (posRow > height-1) 
             {
                 posRow = 0;
             } 
@@ -35,7 +36,7 @@ namespace polis__Staden_
                 posCol = 0;
             } 
         }
-        public Person() //Constructor for random movment
+        public Person() 
         {
             Random movment = new Random();
             posRow = movment.Next(25);
@@ -43,29 +44,29 @@ namespace polis__Staden_
             newDirection();
         }
 
-        public int Row
+        public int Row 
         {
             get { return posRow; }
             set { posRow = value; }
         }
-        public int Col
+        public int Col 
         {
             get { return posCol; }
             set { posCol = value; }
         }
-        public int MoneyAmount
+        public int MoneyAmount 
         {
             get { return Money;}
         }
 
-        public void newDirection()
+        public void newDirection() 
         {
-            Random movment = new Random();
+            Random movment = new ();
 
             int direction = movment.Next(0, 8);
             // 0 = N , 1 = E , 2 = S , 3 = W
             // 4 = NE, 5 = SE, 6 = SW, 7 = NW
-            switch (direction)
+            switch (direction) 
             {
                 case 0:
                     Rowdir = -1;

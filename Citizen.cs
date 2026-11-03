@@ -3,44 +3,44 @@ using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
-namespace polis__Staden_
+namespace PoliceAndThief
 {
     internal class Citizen : Person 
     {
-        bool citizenStatus = false; 
-        int Robbercount = 0;
+        bool citizenStatus = false;  
+        int Robbercount = 0; 
 
 
-        public Citizen()
+        public Citizen() 
         {
             Money = 10;
         }
 
-        public void stolenCitizen(Thief thief, Fattighus fattighus)
+        public void stolenCitizen(Thief thief, PoorHouse poorhouse) 
         {
             Money -= 5;
             thief.CollectStolenMoney(5);
             Robbercount++;
             if (Money == 0) 
             {
-                fattighus.addPoor(this);
+                poorhouse.addPoor(this);
                 citizenStatus = true;
             }  
         }
 
-        public int TotalRobberies
+        public int TotalRobberies 
         {
             get { return Robbercount; }
         }
 
         
 
-        public bool PoorStatus
+        public bool PoorStatus 
         {
             get { return citizenStatus; }
         }
 
-        public void Moneyrecived()
+        public void Moneyrecived() 
         {
             Money += 5;
             citizenStatus = false;

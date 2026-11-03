@@ -2,42 +2,42 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace polis__Staden_
+namespace PoliceAndThief
 {
     internal class EventLog
     {
+        List <string> events = new (); 
 
-        List <string> events = new List <string> ();
-
-
-        public void addEvent(string info)
+        public void addEvent(string info) 
         {
             events.Insert (0,info);
-            if (events.Count > 10) 
+            if (events.Count > 5) 
             {
-                events.RemoveAt(10);
+                events.RemoveAt(5);
             }
         }
-        public void showEvent() 
+
+        public void showEvent(int startCol, int startRow) 
         {
-            for (int i = 0; i < events.Count; i++)  
+            for (int i = 0; i < events.Count; i++)
             {
-                
-                if (i == 0) 
+                Console.SetCursorPosition(startCol, startRow + i);
+
+                if (i == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"{events[i]}");
-                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine($"{events[i]}");
+                    Console.ResetColor();
                 }
 
-
+                Console.Write(events[i].PadRight(55));
             }
 
+            Console.ResetColor();
+
         }
-        
+
     }
 }

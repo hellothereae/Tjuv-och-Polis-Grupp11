@@ -3,45 +3,37 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace polis__Staden_
+namespace PoliceAndThief
 {
-    internal class Fattighus : Place // OBS! alla kommentarer finns i Stad.cs
+    internal class PoorHouse : Place 
     {
-        char[,] fattighus;
-        int refundMoney;
-        DateTime PoorReleaseTimer;
-        int TotalPoliceRecoverd;
-        
+        char[,] poorhouse; 
+        int refundMoney; 
+        DateTime PoorReleaseTimer; 
+        int TotalPoliceRecoverd; 
 
-
-        public Fattighus() : base (10,50) 
+        public PoorHouse() : base (10,50) 
         {
-            fattighus = new char[Rows, Cols];
-            PoorReleaseTimer = DateTime.Now;
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < Cols; j++)
-                {
-                    fattighus[i, j] = ' ';
-                }
-            }
+            poorhouse = new char[Rows, Cols]; 
+            PoorReleaseTimer = DateTime.Now; 
+            ClearPoorHouse();
         }
 
-
-        public void ClearFattighus()
+        public void ClearPoorHouse() 
         {
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
                 {
-                    fattighus[i, j] = ' ';
+                    poorhouse[i, j] = ' ';
                 }
             }
         }
 
-
-        public void VisaFattighus() 
+        public void ShowPoorHouse(int prisonStartRow)  
         {
+            Console.SetCursorPosition(15, prisonStartRow);
+
             for (int i = 0; i < Cols - 7; i++)
             {
                 if (i == 3)
@@ -63,13 +55,13 @@ namespace polis__Staden_
                 Console.Write('*');
                 for (int j = 0; j < Cols; j++)
                 {
-                    Console.Write(fattighus[i, j]);
+                    Console.Write(poorhouse[i, j]);
                 }
                 
                 Console.Write('*');
                 Console.WriteLine();
             }
-            Console.SetCursorPosition(15, Console.CursorTop);
+            Console.SetCursorPosition(15, Console.CursorTop); 
             for (int i = 0; i < Cols + 2; i++)
             {
                 Console.Write('*');
@@ -79,13 +71,13 @@ namespace polis__Staden_
             Console.WriteLine($"\tPoor:{ Poor.Count,3}");
         }
 
-        public void CitizenRefund(int amount)
+        public void CitizenRefund(int amount) 
         {
             refundMoney += amount;
             TotalPoliceRecoverd += amount;
         }
 
-        public int PoliceRecovered
+        public int PoliceRecovered 
         {
             get { return TotalPoliceRecoverd; }
         }
@@ -95,7 +87,7 @@ namespace polis__Staden_
             get { return refundMoney; }
         }
 
-        List <Citizen> Poor = new List<Citizen>();
+        List <Citizen> Poor = new List<Citizen>(); 
 
         public void addPoor(Citizen citizen) 
         {
@@ -104,20 +96,22 @@ namespace polis__Staden_
             citizen.Row = random.Next(10);
             citizen.Col = random.Next(50);
         }
-
-        public void movePoor()
+        
+        public void movePoor() 
         {
-            ClearFattighus();
+            ClearPoorHouse();
             foreach (Citizen citizen in Poor) 
             {
                 citizen.Move(10, 50);
-                fattighus[citizen.Row, citizen.Col] = 'C';
+                poorhouse[citizen.Row, citizen.Col] = 'C';
+
             }
         }
 
-        public void ReleasePoor()
+        public void ReleasePoor() 
         {
-            if ((DateTime.Now - PoorReleaseTimer).TotalSeconds >= 15)
+            
+            if ((DateTime.Now - PoorReleaseTimer).TotalSeconds >= 10)
             {
                 PoorReleaseTimer = DateTime.Now;
                 while (refundMoney >= 5 && Poor.Count > 0)
@@ -126,8 +120,11 @@ namespace polis__Staden_
                     Poor.RemoveAt(0);
                     citizen.Moneyrecived();
                     refundMoney -= 5; 
+
                 }
+
             }
+            
         }
     }
 }

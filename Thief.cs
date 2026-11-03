@@ -1,48 +1,48 @@
 ﻿using System;
 
 
-namespace polis__Staden_
+namespace PoliceAndThief
 {
-    internal class Thief : Person // thief inherits from Person
+    internal class Thief : Person 
     {
-        bool InPrison = false; // To check if the thief is in prison false = In City
-        int Prisonperiod;  // To store the prison period in seconds.
-        DateTime PrisonStart; // Time of Prison entry
+        bool InPrison = false; 
+        int Prisonperiod;  
+        DateTime PrisonStart; 
 
 
-        public Thief() // Constructor to create a thief money amount
+        public Thief() 
         {
             Money = 0;
         }
 
-        // Method to arrest the thief, and calculate the period in prison every 5$ = 10 sec
-        public void Arrest(Prison fangelse, Fattighus fattighus)
+        
+        public void Arrest(Prison prison, PoorHouse poorHouse)
         {
             int stolenMoney = Money;
             Money = 0;
-            fangelse.addPrisoner(this);
+            prison.addPrisoner(this);
             InPrison = true;
             PrisonStart = DateTime.Now;
-            fattighus.CitizenRefund(stolenMoney);
+            poorHouse.CitizenRefund(stolenMoney);
             Prisonperiod = stolenMoney * 2;
         }
 
-        // Method to check if the prison time is over and release the thief
-        public void releaseTime(Prison fangelse)
+        
+        public void releaseTime(Prison prison)
         {
             if ((DateTime.Now - PrisonStart).TotalSeconds >= Prisonperiod)
             {
                 InPrison = false;
-               fangelse.releasePrisoner(this);
+                prison.releasePrisoner(this);
             }
         }
 
-        public bool PrisonStatus
+        public bool PrisonStatus 
         {
             get { return InPrison; }
         }
 
-        public void CollectStolenMoney(int stolenMoney)
+        public void CollectStolenMoney(int stolenMoney) 
         {
             Money += stolenMoney;
         }
