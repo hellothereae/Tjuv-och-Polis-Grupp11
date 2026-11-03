@@ -12,7 +12,7 @@ Police & Thief är en konsolapplikation som simulerar en stad där medborgare, t
 - **Fängelse:** Gripna tjuvar placeras i fängelse och släpps efter en viss tid.
 - **Fattighus:** Medborgare som förlorar alla sina pengar hamnar i fattighuset och kan få ekonomisk hjälp.
 - **Statistik:** Visar information om rån, gripanden och ekonomin i staden.
-- **Event Log:** Visar i realtid vad som händer i staden.
+- **Händelselogg:** Visar viktiga händelser i staden.
 
 ## Projektstruktur
 
