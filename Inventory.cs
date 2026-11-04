@@ -28,9 +28,9 @@ namespace PoliceAndThief
 
             PrintLine(startCol, startRow,  $"Citizens Wealth:\t\t {totalWealth}$");
 
-            PrintLine(startCol, startRow + 1, $"Police Recovered:\t {poorHouse.PoliceRecovered,11}$");
+            PrintLine(startCol, startRow + 1, $"Police Recovered:\t {poorHouse.TotalPoliceRecoverd,11}$");
 
-            PrintLine(startCol, startRow + 2, $"Thieves got arrested: {prison.ArrestsCount,8}");
+            PrintLine(startCol, startRow + 2, $"Thieves got arrested: {prison.TotalArrests,8}");
 
             PrintLine(startCol, startRow + 3, $"Citizens got robbed: {totalRobberies,9}");
 
@@ -51,7 +51,7 @@ namespace PoliceAndThief
 
             addDivider(startCol, startRow + 10);
 
-            PrintLine(startCol, startRow + 11, $"Poor House Balance:  {poorHouse.PoorHouseBalance,4}$");
+            PrintLine(startCol, startRow + 11, $"Poor House Balance:  {poorHouse.refundMoney,4}$");
         }
 
         private void addDivider(int startCol, int startRow) 

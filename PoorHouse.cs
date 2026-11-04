@@ -8,9 +8,9 @@ namespace PoliceAndThief
     internal class PoorHouse : Place 
     {
         char[,] poorhouse; 
-        int refundMoney; 
+        public int refundMoney; 
         DateTime PoorReleaseTimer; 
-        int TotalPoliceRecoverd; 
+        public int TotalPoliceRecoverd; 
 
         public PoorHouse() : base (10,50) 
         {
@@ -77,15 +77,6 @@ namespace PoliceAndThief
             TotalPoliceRecoverd += amount;
         }
 
-        public int PoliceRecovered 
-        {
-            get { return TotalPoliceRecoverd; }
-        }
-
-        public int PoorHouseBalance
-        {
-            get { return refundMoney; }
-        }
 
         List <Citizen> Poor = new List<Citizen>(); 
 

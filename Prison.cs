@@ -9,7 +9,7 @@ namespace PoliceAndThief
     internal class Prison : Place 
     {
         char[,] prison; 
-        int TotalArrests = 0; 
+        public int TotalArrests = 0; 
 
         public Prison() : base(10, 10) 
         {
@@ -92,10 +92,7 @@ namespace PoliceAndThief
             thief.Col = random.Next(10);
         }
 
-        public int ArrestsCount
-        {
-            get { return TotalArrests; }
-        }
+       
 
         public void releasePrisoner(Thief thief) 
         {
