@@ -7,8 +7,8 @@ namespace PoliceAndThief
 {
     internal class Citizen : Person 
     {
-        bool citizenStatus = false;  
-        int Robbercount = 0; 
+        public bool citizenStatus = false;  
+        public int Robbercount = 0; 
 
 
         public Citizen() 
@@ -28,17 +28,6 @@ namespace PoliceAndThief
             }  
         }
 
-        public int TotalRobberies 
-        {
-            get { return Robbercount; }
-        }
-
-        
-
-        public bool PoorStatus 
-        {
-            get { return citizenStatus; }
-        }
 
         public void Moneyrecived() 
         {

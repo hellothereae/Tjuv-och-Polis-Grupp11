@@ -6,12 +6,12 @@ namespace PoliceAndThief
 {
     internal class EventLog
     {
-        List <string> events = new (); 
+        List <string> events = new ();
 
-        public void addEvent(string info) 
+        public void addEvent(string info)
         {
-            events.Insert (0,info);
-            if (events.Count > 5) 
+            events.Insert(0, info);
+            if (events.Count > 5)
             {
                 events.RemoveAt(5);
             }
@@ -32,7 +32,7 @@ namespace PoliceAndThief
                     Console.ResetColor();
                 }
 
-                Console.Write(events[i].PadRight(55));
+                Console.Write(events[i]);
             }
 
             Console.ResetColor();

@@ -15,7 +15,7 @@ namespace PoliceAndThief
             foreach (Citizen citizen in citizens)
             {
                 totalCitizenMoney += citizen.MoneyAmount;
-                totalRobberies += citizen.TotalRobberies;
+                totalRobberies += citizen.Robbercount;
             }
 
             int totalThiefMoney = 0;
@@ -26,7 +26,7 @@ namespace PoliceAndThief
 
             
 
-            PrintLine(startCol, startRow,  $"Citizens Wealth:\t\t {totalWealth}$");
+            PrintLine(startCol, startRow,  $"Initial Citizens Wealth:\t {totalWealth}$");
 
             PrintLine(startCol, startRow + 1, $"Police Recovered:\t {poorHouse.TotalPoliceRecoverd,11}$");
 
@@ -34,29 +34,29 @@ namespace PoliceAndThief
 
             PrintLine(startCol, startRow + 3, $"Citizens got robbed: {totalRobberies,9}");
 
-            Console.SetCursorPosition(startCol, startRow + 5);
+            
 
-           
+            Console.SetCursorPosition(startCol, startRow + 5);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("INVENTORY");
             Console.ResetColor();
-
+     
             addDivider(startCol, startRow + 6);
 
-            PrintLine(startCol, startRow + 7, $"Citizens Money:\t{totalCitizenMoney,7}$");
+            PrintLine(startCol, startRow + 7, $"Current citizens wealth:{totalCitizenMoney,6}$");
 
             addDivider(startCol, startRow + 8);
 
-            PrintLine(startCol, startRow + 9, $"Thiefs Money:\t{totalThiefMoney,7}$");
+            PrintLine(startCol, startRow + 9, $"Thieves wealth:\t{totalThiefMoney,12}$");
 
             addDivider(startCol, startRow + 10);
 
-            PrintLine(startCol, startRow + 11, $"Poor House Balance:  {poorHouse.refundMoney,4}$");
+            PrintLine(startCol, startRow + 11, $"Poor house balance:  {poorHouse.refundMoney,9}$");
         }
 
         private void addDivider(int startCol, int startRow) 
         {
-            PrintLine(startCol, startRow, "--------------------------");
+            PrintLine(startCol, startRow, "--------------------------------");
         }
         private void PrintLine(int col, int row, string text) 
         {

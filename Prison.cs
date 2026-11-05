@@ -117,7 +117,7 @@ namespace PoliceAndThief
         {
             foreach (Thief thief in thieves)
             {
-                if (thief.PrisonStatus == true)
+                if (thief.InPrison == true)
                 {
                     thief.releaseTime(this);
                 }

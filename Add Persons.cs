@@ -58,10 +58,12 @@ namespace PoliceAndThief
             Console.Write("P");
             Console.ResetColor();
             Console.Write(" = Add a new Police to city");
+
+            Console.SetCursorPosition(70, prisonStartRow + 17);
+            Console.Write("ESC");
+            Console.Write(" = Exit the game");
+            
         }
-
-
-
 
         
         public void KeyFunction(City city, List<Citizen> citizens, List<Thief> thieves, List<Police> policeOfficers, EventLog eventLog) 
@@ -87,6 +89,12 @@ namespace PoliceAndThief
                     CreatePolice(city, policeOfficers, 1);
                     eventLog.addEvent($"++ New Police added           {DateTime.Now:HH:mm:ss}");
                 } 
+
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Environment.Exit(0);
+                }
             }
         }
     }

@@ -6,43 +6,43 @@ namespace PoliceAndThief
 {
     internal class Movement
     {
-        public void MovePeople(City stad, List<Thief> thieves, List<Citizen> citizens, List<Police> policeOfficers)
+        public void MovePeople(City city, List<Thief> thieves, List<Citizen> citizens, List<Police> policeOfficers)
         {
-            stad.ClearCity();
+            city.ClearCity();
 
             foreach (Thief thief in thieves)
             {
-                if (thief.PrisonStatus == false)
+                if (thief.InPrison == false)
                 {
                     thief.Move(25, 100);
-                    stad.addThief(thief);
+                    city.addThief(thief);
                 }
             }
 
             foreach (Citizen citizen in citizens)
             {
-                if (citizen.PoorStatus == false)
+                if (citizen.citizenStatus == false)
                 {
                     citizen.Move(25, 100);
-                    stad.addCitizen(citizen);
+                    city.addCitizen(citizen);
                 }
             }
 
             foreach (Police police in policeOfficers)
             {
                 police.Move(25, 100);
-                stad.addPolice(police);
+                city.addPolice(police);
             }
         }
 
         private DateTime newDirection = DateTime.Now;
         public void ChangeThievesDirection(List<Thief> thieves)
         {
-            if ((DateTime.Now - newDirection).TotalSeconds >= 20) // Byt riktning på tjuven var 20:e sekund för att öka chansen för möten mellan tjuven och de andra
+            if ((DateTime.Now - newDirection).TotalSeconds >= 20) 
             {
                 foreach (Thief thief in thieves)
                 {
-                    if (thief.PrisonStatus == false)
+                    if (thief.InPrison == false)
                     {
                         thief.newDirection();
                     }

@@ -13,7 +13,7 @@
             PoorHouse poorHouse = new();
             AddPersons addPersons = new ();
 
-            int thievesCount = 15;
+            int thievesCount = 5;
             int citizensCount = 20;
             int policeCount = 10;
 

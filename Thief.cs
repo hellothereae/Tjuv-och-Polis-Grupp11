@@ -5,7 +5,7 @@ namespace PoliceAndThief
 {
     internal class Thief : Person 
     {
-        bool InPrison = false; 
+        public bool InPrison = false; 
         int Prisonperiod;  
         DateTime PrisonStart; 
 
@@ -37,10 +37,6 @@ namespace PoliceAndThief
             }
         }
 
-        public bool PrisonStatus 
-        {
-            get { return InPrison; }
-        }
 
         public void CollectStolenMoney(int stolenMoney) 
         {

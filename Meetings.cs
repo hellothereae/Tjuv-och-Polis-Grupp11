@@ -34,8 +34,8 @@ namespace PoliceAndThief
                 {
                     if (thief.Row == citizen.Row &&
                         thief.Col == citizen.Col &&
-                        thief.PrisonStatus == false &&
-                        citizen.PoorStatus == false)
+                        thief.InPrison == false &&
+                        citizen.citizenStatus == false)
                     {
                         citizen.stolenCitizen(thief, poorHouse); 
                         eventLog.addEvent($"$$ Thief robbed Citizen       {DateTime.Now:HH:mm:ss}");
