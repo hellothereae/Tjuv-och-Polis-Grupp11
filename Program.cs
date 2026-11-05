@@ -1,4 +1,6 @@
-﻿namespace PoliceAndThief
+﻿using polis__Staden_;
+
+namespace PoliceAndThief
 {
     internal class Program
     {
@@ -29,7 +31,8 @@
             EventLog eventLog = new (); 
             Inventory inventory = new (); 
             Movement movement = new (); 
-            Meetings meetings = new (); 
+            Meetings meetings = new ();
+            Keys keys = new();
 
 
             while (true)
@@ -62,11 +65,11 @@
 
                 inventory.ShowInventory(70, prisonStartRow, citizens, thieves, poorHouse, prison);
 
-                addPersons.ShowKeyFunctions(prisonStartRow);
+                keys.ShowKeyFunctions(prisonStartRow);
 
                 eventLog.showEvent(0, prisonStartRow + 14);
 
-                addPersons.KeyFunction(city, citizens, thieves, policeOfficers, eventLog);
+                keys.KeyFunction(city, addPersons, citizens, thieves, policeOfficers, eventLog);
             }
 
         }
