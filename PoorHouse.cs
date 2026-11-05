@@ -25,7 +25,7 @@ namespace PoliceAndThief
             {
                 for (int j = 0; j < Cols; j++)
                 {
-                    poorhouse[i, j] = ' ';
+                    poorhouse[i, j] = ' '; 
                 }
             }
         }
@@ -84,8 +84,8 @@ namespace PoliceAndThief
         {
             Poor.Add(citizen);
             Random random = new Random();
-            citizen.Row = random.Next(10);
-            citizen.Col = random.Next(50);
+            citizen.posRow = random.Next(10);
+            citizen.posCol = random.Next(50);
         }
         
         public void movePoor() 
@@ -94,7 +94,7 @@ namespace PoliceAndThief
             foreach (Citizen citizen in Poor) 
             {
                 citizen.Move(10, 50);
-                poorhouse[citizen.Row, citizen.Col] = 'C';
+                poorhouse[citizen.posRow, citizen.posCol] = 'C';
 
             }
         }

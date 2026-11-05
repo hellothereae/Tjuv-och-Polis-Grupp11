@@ -93,6 +93,7 @@ namespace PoliceAndThief
                 if (key.Key == ConsoleKey.Escape)
                 {
                     Console.Clear();
+                    Console.WriteLine("Tack,\nGrupp 11 :)");
                     Environment.Exit(0);
                 }
             }

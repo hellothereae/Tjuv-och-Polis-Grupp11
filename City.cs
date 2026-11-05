@@ -25,17 +25,17 @@ namespace PoliceAndThief
 
         public void addThief(Thief thief) 
         {
-            city[thief.Row, thief.Col] = 'T';
+            city[thief.posRow, thief.posCol] = 'T';
         }
 
         public void addCitizen(Citizen citizen) 
         {
-            city[citizen.Row, citizen.Col] = 'C';
+            city[citizen.posRow, citizen.posCol] = 'C';
         }
 
         public void addPolice(Police police) 
         {
-            city[police.Row, police.Col] = 'P';
+            city[police.posRow, police.posCol] = 'P';
         }
 
 

@@ -88,8 +88,8 @@ namespace PoliceAndThief
             Prisoner.Add(thief);
             TotalArrests++;
             Random random = new Random();
-            thief.Row = random.Next(10);
-            thief.Col = random.Next(10);
+            thief.posRow = random.Next(10);
+            thief.posCol = random.Next(10);
         }
 
        
@@ -108,7 +108,7 @@ namespace PoliceAndThief
             foreach (Thief thief in Prisoner)
             {
                 thief.Move(10, 10);
-                prison[thief.Row, thief.Col] = 'T';
+                prison[thief.posRow, thief.posCol] = 'T';
             }
 
         }

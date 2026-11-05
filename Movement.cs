@@ -35,7 +35,7 @@ namespace PoliceAndThief
             }
         }
 
-        private DateTime newDirection = DateTime.Now;
+        private DateTime newDirection = DateTime.Now; 
         public void ChangeThievesDirection(List<Thief> thieves)
         {
             if ((DateTime.Now - newDirection).TotalSeconds >= 20) 
@@ -48,7 +48,7 @@ namespace PoliceAndThief
                     }
                 }
 
-                newDirection = DateTime.Now;
+                newDirection = DateTime.Now; 
             }
         }
     }

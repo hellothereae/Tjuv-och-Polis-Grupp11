@@ -4,10 +4,10 @@ using System.Text;
 
 namespace PoliceAndThief
 {
-    internal class Person
+    internal class Person 
     {
-        int posRow; 
-        int posCol; 
+        public int posRow; 
+        public int posCol; 
         int Rowdir; 
         int Coldir;
         protected int Money;
@@ -44,16 +44,6 @@ namespace PoliceAndThief
             newDirection();
         }
 
-        public int Row 
-        {
-            get { return posRow; }
-            set { posRow = value; }
-        }
-        public int Col 
-        {
-            get { return posCol; }
-            set { posCol = value; }
-        }
         public int MoneyAmount 
         {
             get { return Money;}

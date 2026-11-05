@@ -12,7 +12,7 @@ namespace PoliceAndThief
             {
                 foreach (Thief thief in thieves)
                 {
-                    if (police.Row == thief.Row && police.Col == thief.Col)
+                    if (police.posRow == thief.posRow && police.posCol == thief.posCol)
                     {
                         if (thief.MoneyAmount > 0)
                         {
@@ -32,10 +32,7 @@ namespace PoliceAndThief
             {
                 foreach (Citizen citizen in citizens)
                 {
-                    if (thief.Row == citizen.Row &&
-                        thief.Col == citizen.Col &&
-                        thief.InPrison == false &&
-                        citizen.citizenStatus == false)
+                    if (thief.posRow == citizen.posRow && thief.posCol == citizen.posCol && thief.InPrison == false && citizen.citizenStatus == false)
                     {
                         citizen.stolenCitizen(thief, poorHouse); 
                         eventLog.addEvent($"$$ Thief robbed Citizen       {DateTime.Now:HH:mm:ss}");
