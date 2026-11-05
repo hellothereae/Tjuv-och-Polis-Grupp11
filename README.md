@@ -31,4 +31,5 @@ Police & Thief är en konsolapplikation som simulerar en stad där medborgare, t
 | **Inventory** | Visar statistik och ekonomisk information |
 | **EventLog** | Visar händelser i realtid |
 | **AddPersons** | Lägger till nya personer |
-| **Place** | Basklass för olika platser |
+| **Keys** | Styr programmets funktioner via tangentbordet. |
+| **،ثغس** | Basklass för olika platser |
